@@ -1,0 +1,6 @@
+C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\Mapper\bin\Debug\netcoreapp2.2\Mapper.deps.json
+C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\Mapper\bin\Debug\netcoreapp2.2\Mapper.dll
+C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\Mapper\obj\Debug\netcoreapp2.2\Mapper.csprojAssemblyReference.cache
+C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\Mapper\obj\Debug\netcoreapp2.2\Mapper.csproj.CoreCompileInputs.cache
+C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\Mapper\obj\Debug\netcoreapp2.2\Mapper.AssemblyInfoInputs.cache
+C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\Mapper\obj\Debug\netcoreapp2.2\Mapper.AssemblyInfo.cs
