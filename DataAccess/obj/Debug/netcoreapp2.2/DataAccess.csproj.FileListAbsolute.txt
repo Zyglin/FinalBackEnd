@@ -1,9 +1,0 @@
-C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.csproj.CoreCompileInputs.cache
-C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.AssemblyInfoInputs.cache
-C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.AssemblyInfo.cs
-C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\DataAccess\bin\Debug\netcoreapp2.2\DataAccess.deps.json
-C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\DataAccess\bin\Debug\netcoreapp2.2\DataAccess.dll
-C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.csprojAssemblyReference.cache
-C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\DataAccess\bin\Debug\netcoreapp2.2\DataAccess.pdb
-C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.dll
-C:\Users\Artsem.Zyhlin\Desktop\FinalTaskBackEnd\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.pdb
