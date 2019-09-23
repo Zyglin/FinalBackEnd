@@ -14,14 +14,14 @@ namespace WebFilms.Services.Service
         {
 
         }
-        public void CreateComment(Comment comment)
+        public async Task<Comment> CreateComment(Comment comment)
         {
-            UnitOfWork.Comments.Create(comment);
+           return await UnitOfWork.Comments.Create(comment);
         }
 
-        public IEnumerable<Comment> GetComments(Guid id)
+        public async Task<IList<Comment>> GetComments(Guid id)
         {
-            return UnitOfWork.Comments.Filter(g => g.FilmId == id, "User");
+            return await UnitOfWork.Comments.Filter(g => g.FilmId == id, "User");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using WebFilms.DataAccess.DbPatterns.Interfaces;
 using WebFilms.DataAccess.Entity;
 using WebFilms.Services.Interface;
@@ -13,14 +14,14 @@ namespace WebFilms.Services.Service
 
         }
 
-        public IEnumerable<Film> GetAllFilms()
+        public async Task<IList<Film>> GetAllFilms()
         {
-            return UnitOfWork.Films.GetAll();
+            return await UnitOfWork.Films.GetAll();
         }
 
-        public Film GetFilm(Guid id)
+        public async Task<Film> GetFilm(Guid id)
         {
-            return UnitOfWork.Films.Get(id);
+            return await UnitOfWork.Films.Get(id);
         }
     }
 }

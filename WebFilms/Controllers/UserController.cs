@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -47,13 +48,13 @@ namespace WebFilms.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Post([FromBody]LoginViewModel model)
+        public async Task<IActionResult> Post([FromBody]LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
                 IActionResult response = Unauthorized();
 
-                User user = _userService.GetUser(model.Email);
+                User user = await _userService.GetUser(model.Email);
 
                 if (user != null && PBKDF2Helper.IsValidHash(model.Password, user.PasswordHash))
                 {

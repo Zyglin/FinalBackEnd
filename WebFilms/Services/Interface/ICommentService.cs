@@ -8,8 +8,8 @@ namespace WebFilms.Services.Interface
 {
     public interface ICommentService
     {
-        void CreateComment(Comment comment);
-        IEnumerable<Comment> GetComments(Guid id);
+        Task<Comment> CreateComment(Comment comment);
+        Task<IList<Comment>> GetComments(Guid id);
 
     }
 }

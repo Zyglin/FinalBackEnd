@@ -26,11 +26,11 @@ namespace WebFilms.Controllers
         // POST api/<controller>
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Post([FromBody]RegistrationViewModel model)
+        public async Task<IActionResult> Post([FromBody]RegistrationViewModel model)
         {
             if (ModelState.IsValid)
             {
-                User userValid = _userService.GetUser(model.Email);
+                User userValid = await _userService.GetUser(model.Email);
 
                 if (userValid == null && model.Password == model.ConfirmPassword)
                 {
@@ -40,7 +40,7 @@ namespace WebFilms.Controllers
                         Email = model.Email,
                         PasswordHash = PBKDF2Helper.CalculateHash(model.ConfirmPassword),
                     };
-                    _userService.CreateUser(user);
+                    await _userService.CreateUser(user);
                     return Ok();
                 }
                 else

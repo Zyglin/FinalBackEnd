@@ -26,20 +26,20 @@ namespace WebFilms.Controllers
      
         [HttpGet]
         [Authorize]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
             var model = new ListFilmsViewModel();
-            List<Film> films = _filmService.GetAllFilms().ToList();
-            model.Films = _mapper.Map<List<Film>,List<FilmViewModel>>(films);
+            IList<Film> films = await  _filmService.GetAllFilms();
+            model.Films = _mapper.Map<IList<Film>,List<FilmViewModel>>(films);
             return Ok(model.Films);       
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public IActionResult Get(Guid id)
+        public async Task<IActionResult> Get(Guid id)
         {
             var model = new FilmViewModel();
-            Film film = _filmService.GetFilm(id);
+            Film film = await _filmService.GetFilm(id);
             model = _mapper.Map <Film , FilmViewModel > (film);
 
             return Ok(model);

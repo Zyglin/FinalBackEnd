@@ -8,7 +8,7 @@ namespace WebFilms.Services.Interface
 {
     public interface IFilmService
     {
-        IEnumerable<Film> GetAllFilms();
-        Film GetFilm(Guid id);
+        Task<IList<Film>> GetAllFilms();
+        Task<Film> GetFilm(Guid id);
     }
 }

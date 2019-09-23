@@ -12,7 +12,6 @@ using WebFilms.JwtClass;
 using WebFilms.Services.Interface;
 using WebFilms.ViewModel;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebFilms.Controllers
 {
@@ -33,16 +32,17 @@ namespace WebFilms.Controllers
         // GET: api/<controller>
         [HttpGet("{id}")]
         [Authorize]
-        public IActionResult Get(Guid id)
+        public async Task<IActionResult> Get(Guid id)
+
         {
             var model = new ListCommentsViewModel();
-            List<Comment> comments = _commentService.GetComments(id).ToList();
-            model.Comments = _mapper.Map<List<Comment>, List<CommentViewModel>>(comments);
+            IList<Comment> comments = await _commentService.GetComments(id);
+            model.Comments = _mapper.Map<IList<Comment>, List<CommentViewModel>>(comments);
             return Ok(model.Comments);  
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]CommentViewModel model)
+        public async Task<IActionResult> Post([FromBody]CommentViewModel model)
         {
             var data = tokenDecode.DecodeJwt(_httpContextAccessor);
             string UserId = data["idUser"];
@@ -54,7 +54,7 @@ namespace WebFilms.Controllers
                 UserId = Guid.Parse(UserId)
             };
 
-            _commentService.CreateComment(comment);
+            await _commentService.CreateComment(comment);
 
 
             return Ok();

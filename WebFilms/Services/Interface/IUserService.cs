@@ -8,7 +8,7 @@ namespace WebFilms.Services.Interface
 {
     public interface IUserService
     {
-        User GetUser(string email);
-        void CreateUser(User user);
+        Task<User> GetUser(string email);
+        Task<User> CreateUser(User user);
     }
 }

@@ -19,29 +19,27 @@ namespace WebFilms.DataAccess.DbPatterns
             _context = context;
         }
 
-        public void Create(T t)
+        public async Task<T> Create(T t)
         {
             _context.Set<T>().Add(t);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+            return t;
         }
 
-        public void Delete(T t)
-        {
-            if (t != null)
-            {
-                _context.Set<T>().Remove(t);
-                _context.SaveChanges();
-            }
+        public async Task<int> Delete(T t)
+        { 
+           _context.Set<T>().Remove(t);
+           return await _context.SaveChangesAsync(); 
         }
 
-        public T Get(Guid id)
+        public async Task<T> Get(Guid id)
         {
-            return _context.Set<T>().Find(id);
+            return await _context.Set<T>().FindAsync(id);
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IList<T>> GetAll()
         {
-            return _context.Set<T>();
+            return await _context.Set<T>().ToListAsync();
         }
 
 
@@ -51,14 +49,14 @@ namespace WebFilms.DataAccess.DbPatterns
             _context.SaveChanges();
         }
 
-        public IEnumerable<T> Filter(Expression<Func<T, bool>> predicate, params string[] navigationProperties)
+        public async Task<IList<T>> Filter(Expression<Func<T, bool>> predicate, params string[] navigationProperties)
         {
             var query = _context.Set<T>().AsQueryable();
             foreach (var navigationProperty in navigationProperties)
             {
                 query = query.Include(navigationProperty);
             }
-            var list = query.Where(predicate).ToList();
+            var list = await query.Where(predicate).ToListAsync();
             return list;
         }
 

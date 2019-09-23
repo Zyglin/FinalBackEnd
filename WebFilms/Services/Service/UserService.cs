@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using WebFilms.DataAccess.DbPatterns.Interfaces;
 using WebFilms.DataAccess.Entity;
 using WebFilms.Services.Interface;
@@ -13,14 +14,15 @@ namespace WebFilms.Services.Service
 
         }
 
-        public void CreateUser(User user)
+        public async Task<User> CreateUser(User user)
         {
-            UnitOfWork.Users.Create(user);
+           return await UnitOfWork.Users.Create(user);
         }
 
-        public User GetUser(string email)
+        public async Task<User> GetUser(string email)
         {
-            return UnitOfWork.Users.GetAll().FirstOrDefault(x => x.Email == email);
+            IList<User> ts = await UnitOfWork.Users.GetAll();
+            return ts.FirstOrDefault(x => x.Email == email);
         }
     }
 }

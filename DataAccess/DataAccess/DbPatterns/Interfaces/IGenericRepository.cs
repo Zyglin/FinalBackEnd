@@ -8,12 +8,12 @@ namespace WebFilms.DataAccess.DbPatterns.Interfaces
 {
     public interface IGenericRepository<T>
     {
-        void Create(T t);
-        void Delete(T t);
-        T Get(Guid id);
-        IEnumerable<T> GetAll();
+        Task<T> Create(T t);
+        Task<int> Delete(T t);
+        Task<T> Get(Guid id);
+        Task<IList<T>> GetAll();
         void Update(T t);
-        IEnumerable<T> Filter(Expression<Func<T, bool>> predicate, params string[] navigationProperties);
+        Task<IList<T>> Filter(Expression<Func<T, bool>> predicate, params string[] navigationProperties);
         //IEnumerable<T> FilterTwo(params string[] navigationProperties);
     }
 }
