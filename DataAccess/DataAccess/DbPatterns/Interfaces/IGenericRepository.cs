@@ -12,7 +12,7 @@ namespace WebFilms.DataAccess.DbPatterns.Interfaces
         Task<int> Delete(T t);
         Task<T> Get(Guid id);
         Task<IList<T>> GetAll();
-        void Update(T t);
+        //void Update(T t);
         Task<IList<T>> Filter(Expression<Func<T, bool>> predicate, params string[] navigationProperties);
         //IEnumerable<T> FilterTwo(params string[] navigationProperties);
     }

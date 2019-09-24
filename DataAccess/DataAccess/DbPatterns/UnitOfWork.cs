@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.DataAccess.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace WebFilms.DataAccess.DbPatterns
         public IGenericRepository<Genre> Genres => new GenericRepository<Genre>(_context);
 
         public IGenericRepository<Comment> Comments => new GenericRepository<Comment>(_context);
+        public IGenericRepository<Rating> Ratings => new GenericRepository<Rating>(_context);
 
         public void Save()
         {

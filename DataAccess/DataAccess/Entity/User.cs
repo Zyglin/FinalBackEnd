@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.DataAccess.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,5 +21,6 @@ namespace WebFilms.DataAccess.Entity
         public string PasswordHash { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Rating> Ratings { get; set; }
     }
 }

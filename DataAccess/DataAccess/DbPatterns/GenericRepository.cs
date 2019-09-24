@@ -42,13 +42,6 @@ namespace WebFilms.DataAccess.DbPatterns
             return await _context.Set<T>().ToListAsync();
         }
 
-
-        public void Update(T t)
-        {
-            _context.Entry(t).State = EntityState.Modified;
-            _context.SaveChanges();
-        }
-
         public async Task<IList<T>> Filter(Expression<Func<T, bool>> predicate, params string[] navigationProperties)
         {
             var query = _context.Set<T>().AsQueryable();
@@ -59,6 +52,13 @@ namespace WebFilms.DataAccess.DbPatterns
             var list = await query.Where(predicate).ToListAsync();
             return list;
         }
+
+
+        //public async Task<T> Update(T t)
+        //{
+        //    _context.Entry(t).State = EntityState.Modified;
+        //    await _context.SaveChangesAsync();
+        //}
 
         //public IEnumerable<T> FilterTwo(params string[] navigationProperties)
         //{

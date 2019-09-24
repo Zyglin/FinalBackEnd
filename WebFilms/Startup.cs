@@ -50,9 +50,11 @@ namespace WebFilms
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IFilmService, FilmService>();
+            services.AddTransient<IRatingService, RatingService>();
             var mappingConfig = new MapperConfiguration(mc =>
             {
-                mc.AddProfile(new DomainToViewModel());
+                mc.AddProfile(new DataToViewModel());
+                mc.AddProfile(new ViewModelToData());
             });
 
             IMapper mapper = mappingConfig.CreateMapper();

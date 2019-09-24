@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -31,20 +28,6 @@ namespace WebFilms.Controllers
             _config = config;
             _userService = userService;
         }
-
-
-        //[HttpGet]
-        //[Authorize]
-        //public IActionResult Get()
-        //{
-        //    var accessToken = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Substring(7);
-        //    var handler = new JwtSecurityTokenHandler();
-        //    var tokenS = handler.ReadJwtToken(accessToken) as JwtSecurityToken;
-        //    var id = tokenS.Claims.First(claim => claim.Type == JwtRegisteredClaimNames.NameId).Value;
-        //    var email = tokenS.Claims.First(claim => claim.Type == JwtRegisteredClaimNames.Email).Value;
-
-        //    return Ok(new { UserEmail= email,UserId = id});
-        //}
 
         [AllowAnonymous]
         [HttpPost]

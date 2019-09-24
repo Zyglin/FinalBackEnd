@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DataAccess.DataAccess.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,12 @@ using WebFilms.ViewModel;
 
 namespace WebFilms.Mapper
 {
-    public class DomainToViewModel : Profile
+    public class ViewModelToData:Profile
     {
-        public DomainToViewModel()
+        public ViewModelToData()
         {
-            CreateMap<Film, FilmViewModel>();
-            CreateMap<Comment, CommentViewModel>();
-            CreateMap<User, UserViewModel>();
+            CreateMap<CommentViewModel, Comment>();
+            CreateMap<RatingViewModel, Rating>();
 
         }
     }
