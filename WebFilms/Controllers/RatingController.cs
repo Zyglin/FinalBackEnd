@@ -60,14 +60,6 @@ namespace WebFilms.Controllers
                 rating.Id = Guid.NewGuid();
                 rating.UserId = UserId;
 
-                //Rating rating = new Rating()
-                //{
-                //    Id = Guid.NewGuid(),
-                //    FilmId = FilmId,
-                //    UserId = UserId,
-                //    Value = model.Value
-                //};
-
                 await _ratingService.CreateRating(rating);
 
                 return Ok();
