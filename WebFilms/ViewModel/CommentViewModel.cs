@@ -9,6 +9,8 @@ namespace WebFilms.ViewModel
 {
     public class CommentViewModel
     {
+        public Guid Id { get; set; }
+
         [Required]
         [MaxLength(160)]
         public string Description { get; set; }
