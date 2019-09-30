@@ -22,14 +22,13 @@ namespace WebFilms.Services.Service
 
         public async Task<IList<Rating>> GetRatings(Guid id)
         {
-            IList<Rating> ts = await UnitOfWork.Ratings.GetAll();
-            return ts.Where(x => x.FilmId == id).ToList();
+            return  await UnitOfWork.Ratings.Filter(x => x.FilmId == id);
         }
 
         public async Task<Rating> GetRating(Guid filmId, Guid userId)
         {
-            IList<Rating> ts = await UnitOfWork.Ratings.GetAll();
-            return ts.FirstOrDefault(x => x.FilmId == filmId && x.UserId == userId);
+            IList<Rating> ts = await UnitOfWork.Ratings.Filter(x => x.FilmId == filmId && x.UserId == userId);
+            return ts.SingleOrDefault();
         }
     }
 }

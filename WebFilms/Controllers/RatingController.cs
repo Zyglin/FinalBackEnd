@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using DataAccess.DataAccess.Entity;
@@ -34,16 +35,7 @@ namespace WebFilms.Controllers
         public async Task<IActionResult> Get(Guid id)
         {
             IList <Rating> allRaitings = await _ratingService.GetRatings(id);
-            int stars = 0;
-            if (allRaitings.Count != 0)
-            {
-                foreach (var item in allRaitings)
-                {
-                    stars += item.Value;
-                }
-                stars = stars / allRaitings.Count;
-                return Ok(stars);
-            }
+            int stars = allRaitings.Select(item => item.Value).Sum() / allRaitings.Count;    
             return Ok(stars);
         }
 
