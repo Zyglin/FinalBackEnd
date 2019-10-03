@@ -16,13 +16,13 @@ namespace WebFilms.Services.Service
 
         public async Task<User> CreateUser(User user)
         {
-           return await UnitOfWork.Users.Create(user);
+            return await UnitOfWork.Users.Create(user);
         }
 
         public async Task<User> GetUser(string email)
         {
-            IList<User> ts = await UnitOfWork.Users.GetAll();
-            return ts.FirstOrDefault(x => x.Email == email);
+            IList<User> users = await UnitOfWork.Users.GetAll();
+            return users.FirstOrDefault(x => x.Email == email);
         }
     }
 }

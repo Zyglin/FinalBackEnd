@@ -22,6 +22,7 @@ namespace WebFilms.Controllers
         private readonly IMapper _mapper;
         private IHttpContextAccessor _httpContextAccessor;
         Jwt tokenDecode = new Jwt();
+
         public RatingController(IRatingService ratingService, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _ratingService = ratingService;
@@ -35,8 +36,9 @@ namespace WebFilms.Controllers
         public async Task<IActionResult> Get(Guid id)
         {
             IList <Rating> allRaitings = await _ratingService.GetRatings(id);
-            int stars = allRaitings.Select(item => item.Value).Sum() / allRaitings.Count;    
+            int stars =allRaitings.Count == 0 ? 0 : allRaitings.Select(item => item.Value).Sum() / allRaitings.Count;
             return Ok(stars);
+        
         }
 
         [HttpPost]
@@ -44,20 +46,17 @@ namespace WebFilms.Controllers
         public async Task<IActionResult> Post([FromBody]RatingViewModel model)
         {
             var data = tokenDecode.DecodeJwt(_httpContextAccessor);
-            Guid UserId = Guid.Parse(data["idUser"]);
-            Rating _rating = await _ratingService.GetRating(model.FilmId, UserId);
+            Guid userId = Guid.Parse(data["idUser"]);
+            Rating _rating = await _ratingService.GetRating(model.FilmId, userId);
             if (_rating == null)
             {
                 Rating rating = _mapper.Map<RatingViewModel, Rating>(model);
                 rating.Id = Guid.NewGuid();
-                rating.UserId = UserId;
-
+                rating.UserId = userId;
                 await _ratingService.CreateRating(rating);
-
                 return Ok();
             }
             return Ok("User voted");
         }
-
     }
 }

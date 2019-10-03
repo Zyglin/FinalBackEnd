@@ -27,11 +27,10 @@ namespace WebFilms.Controllers
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
         }
-        // GET: api/<controller>
+
         [HttpGet("{id}")]
         [Authorize]
         public async Task<IActionResult> Get(Guid id)
-
         {
             var model = new ListCommentsViewModel();
             IList<Comment> comments = await _commentService.GetComments(id);
@@ -44,14 +43,11 @@ namespace WebFilms.Controllers
         public async Task<IActionResult> Post([FromBody]CommentViewModel model)
         {
             var data = tokenDecode.DecodeJwt(_httpContextAccessor);
-            Guid UserId = Guid.Parse(data["idUser"]);
+            Guid userId = Guid.Parse(data["idUser"]);
             Comment _comment = _mapper.Map<CommentViewModel, Comment>(model);
             _comment.Id = Guid.NewGuid();
-            _comment.UserId = UserId;
-
+            _comment.UserId = userId;
             await _commentService.CreateComment(_comment);
-
-
             return Ok();
         }
     }
