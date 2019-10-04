@@ -16,16 +16,19 @@ namespace WebFilms.DataAccess.Entity
         public string Name { get; set; }
 
         public string Description { get; set; }
+
         public string YoutubeId { get; set; }
 
         [Required]
         public Genre Genre { get; set; }
+
         public int GenreId { get; set; }
 
         [Required]
         public string ImageXPath { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
         public virtual ICollection<Rating> Ratings { get; set; }
 
     }

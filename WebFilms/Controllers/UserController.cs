@@ -36,9 +36,7 @@ namespace WebFilms.Controllers
             if (ModelState.IsValid)
             {
                 IActionResult response = Unauthorized();
-
                 User user = await _userService.GetUser(model.Email);
-
                 if (user != null && PBKDF2Helper.IsValidHash(model.Password, user.PasswordHash))
                 {
                     var tokenString = GenerateJSONWebToken(user);

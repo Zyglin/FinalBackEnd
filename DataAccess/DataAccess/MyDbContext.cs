@@ -12,13 +12,14 @@ namespace WebFilms.DataAccess
     {
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             string[] GenreTypes = new[] { "Action", "Drama", "Comedy", "Adventure", "Documentaly", "Horror", "Romance" };
 
-                    modelBuilder.Entity<User>().HasData(
+            modelBuilder.Entity<User>().HasData(
             new User
             {
                 Id = Guid.NewGuid(),

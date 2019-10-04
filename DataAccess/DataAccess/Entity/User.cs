@@ -21,6 +21,7 @@ namespace WebFilms.DataAccess.Entity
         public string PasswordHash { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
         public virtual ICollection<Rating> Ratings { get; set; }
     }
 }

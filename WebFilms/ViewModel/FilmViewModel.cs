@@ -18,10 +18,12 @@ namespace WebFilms.ViewModel
 
         [MaxLength(85)]
         public string Description { get; set; }
+
         public string YoutubeId { get; set; }
 
         [Required]
         public Genre Genre { get; set; }
+
         public int GenreId { get; set; }
 
         public string ImageXPath { get; set; }

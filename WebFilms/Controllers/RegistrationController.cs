@@ -15,13 +15,12 @@ namespace WebFilms.Controllers
     public class RegistrationController : Controller
     {
         private IUserService _userService;
+
         public RegistrationController(IUserService userService)
         {
-
             _userService = userService;
         }
 
-        // POST api/<controller>
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Post([FromBody]RegistrationViewModel model)
@@ -29,7 +28,6 @@ namespace WebFilms.Controllers
             if (ModelState.IsValid)
             {
                 User userValid = await _userService.GetUser(model.Email);
-
                 if (userValid == null && model.Password == model.ConfirmPassword)
                 {
                     User user = new User()

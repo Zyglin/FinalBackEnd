@@ -14,9 +14,11 @@ namespace WebFilms.ViewModel
         [Required]
         [MaxLength(160)]
         public string Description { get; set; }
+
         public Guid FilmId { get; set; }
 
         public UserViewModel User { get; set; }
+
         public Guid UserId { get; set; }
     }
 }

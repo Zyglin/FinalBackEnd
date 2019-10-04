@@ -14,7 +14,6 @@ namespace WebFilms.DataAccess.DbPatterns.Interfaces
         IGenericRepository<Genre> Genres { get; }
         IGenericRepository<Comment> Comments { get; }
         IGenericRepository<Rating> Ratings { get; }
-
         void Save();
     }
 }

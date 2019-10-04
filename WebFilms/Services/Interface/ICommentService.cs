@@ -10,6 +10,5 @@ namespace WebFilms.Services.Interface
     {
         Task<Comment> CreateComment(Comment comment);
         Task<IList<Comment>> GetComments(Guid id);
-
     }
 }

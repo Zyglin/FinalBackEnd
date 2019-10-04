@@ -54,9 +54,9 @@ namespace WebFilms.Controllers
                 rating.Id = Guid.NewGuid();
                 rating.UserId = userId;
                 await _ratingService.CreateRating(rating);
-                return Ok();
+                return Ok(rating.FilmId);
             }
-            return Ok("User voted");
+            return Ok(model.FilmId);
         }
     }
 }

@@ -36,7 +36,6 @@ namespace WebFilms.DataAccess
             string[] hashParts = hashToCheck.Split('|');
             int iterations = int.Parse(hashParts[0]);
             byte[] salt = Convert.FromBase64String(hashParts[1]);
-
             string newHash = CalculateHash(password, salt, iterations);
             return hashToCheck == newHash;
         }

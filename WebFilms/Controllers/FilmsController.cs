@@ -17,6 +17,7 @@ namespace WebFilms.Controllers
     {
         private IFilmService _filmService;
         private readonly IMapper _mapper;
+
         public FilmsController(IFilmService filmService, IMapper mapper)
         {
             _filmService = filmService;
@@ -40,15 +41,7 @@ namespace WebFilms.Controllers
             var model = new FilmViewModel();
             Film film = await _filmService.GetFilm(id);
             model = _mapper.Map <Film , FilmViewModel > (film);
-
             return Ok(model);
-        }
-
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-           
         }
     }
 }
