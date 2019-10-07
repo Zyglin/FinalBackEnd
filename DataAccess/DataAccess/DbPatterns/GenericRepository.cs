@@ -26,10 +26,10 @@ namespace WebFilms.DataAccess.DbPatterns
             return t;
         }
 
-        public async Task<int> Delete(T t)
+        public async Task Delete(T t)
         { 
            _context.Set<T>().Remove(t);
-           return await _context.SaveChangesAsync(); 
+           await _context.SaveChangesAsync(); 
         }
 
         public async Task<T> Get(Guid id)
@@ -40,6 +40,12 @@ namespace WebFilms.DataAccess.DbPatterns
         public async Task<IList<T>> GetAll()
         {
             return await _context.Set<T>().ToListAsync();
+        }
+
+        public async Task Update(T t)
+        {
+            _context.Set<T>().Update(t);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IList<T>> Filter(Expression<Func<T, bool>> predicate, params string[] navigationProperties)
@@ -53,12 +59,6 @@ namespace WebFilms.DataAccess.DbPatterns
             return list;
         }
 
-
-        //public async Task<T> Update(T t)
-        //{
-        //    _context.Entry(t).State = EntityState.Modified;
-        //    await _context.SaveChangesAsync();
-        //}
 
         //public IEnumerable<T> FilterTwo(params string[] navigationProperties)
         //{

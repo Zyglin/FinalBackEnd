@@ -9,7 +9,8 @@ namespace WebFilms.DataAccess.DbPatterns.Interfaces
     public interface IGenericRepository<T>
     {
         Task<T> Create(T t);
-        Task<int> Delete(T t);
+        Task Delete(T t);
+        Task Update(T t);
         Task<T> Get(Guid id);
         Task<IList<T>> GetAll();
         //void Update(T t);

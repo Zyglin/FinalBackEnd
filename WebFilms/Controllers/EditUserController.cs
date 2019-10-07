@@ -6,7 +6,10 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebFilms.DataAccess;
+using WebFilms.DataAccess.Entity;
 using WebFilms.JwtClass;
+using WebFilms.Services.Interface;
 using WebFilms.ViewModel;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,12 +21,15 @@ namespace WebFilms.Controllers
     {
         private IHttpContextAccessor _httpContextAccessor;
         private readonly IMapper _mapper;
+        private IUserService _userService;
+
         Jwt tokenDecode = new Jwt();
 
-        public EditUserController(IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public EditUserController(IMapper mapper, IHttpContextAccessor httpContextAccessor,IUserService userService)
         {         
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
+            _userService = userService;
         }
 
 
@@ -31,14 +37,23 @@ namespace WebFilms.Controllers
         [Authorize]
         public async Task<IActionResult> Post([FromBody]EditUserViewModel model)
         {
-            var httpRequest = HttpContext.Request;
             var data = tokenDecode.DecodeJwt(_httpContextAccessor);
-            Guid userId = Guid.Parse(data["idUser"]);
-            //Comment _comment = _mapper.Map<CommentViewModel, Comment>(model);
-            //_comment.Id = Guid.NewGuid();
-            //_comment.UserId = userId;
-            //await _commentService.CreateComment(_comment);
-            return Ok();
+            string mail = data["Email"];
+            User oldUser = await _userService.GetUser(mail);
+            if (oldUser != null && PBKDF2Helper.IsValidHash(model.OldPassword, oldUser.PasswordHash))
+            {
+                User _user = _mapper.Map<EditUserViewModel, User>(model);
+                oldUser.Filebase64 = _user.Filebase64;
+                oldUser.PasswordHash = PBKDF2Helper.CalculateHash(model.NewPassword);
+                oldUser.FullName = _user.FullName;
+                oldUser.PhoneNumber = _user.PhoneNumber;
+                await _userService.UpdateUser(oldUser);
+                return Ok();
+            }
+            else
+            {
+                return BadRequest("Password incorrect");
+            }
         }
     }
 }

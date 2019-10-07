@@ -24,5 +24,10 @@ namespace WebFilms.Services.Service
             IList<User> users = await UnitOfWork.Users.GetAll();
             return users.FirstOrDefault(x => x.Email == email);
         }
+
+        public async Task UpdateUser(User user)
+        {
+            await UnitOfWork.Users.Update(user);
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace WebFilms.Mapper
             CreateMap<CommentViewModel, Comment>();
             CreateMap<RatingViewModel, Rating>();
             CreateMap<RegistrationViewModel, User>();
+            CreateMap<EditUserViewModel, User>();
         }
     }
 }

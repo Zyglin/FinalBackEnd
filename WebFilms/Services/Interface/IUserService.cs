@@ -10,5 +10,6 @@ namespace WebFilms.Services.Interface
     {
         Task<User> GetUser(string email);
         Task<User> CreateUser(User user);
+        Task UpdateUser(User user);      
     }
 }
