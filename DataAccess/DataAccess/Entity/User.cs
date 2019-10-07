@@ -18,6 +18,13 @@ namespace WebFilms.DataAccess.Entity
 
         [Required]
         [MaxLength(85)]
+        public string FullName { get; set; }
+
+        [Required]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [MaxLength(85)]
         public string PasswordHash { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }

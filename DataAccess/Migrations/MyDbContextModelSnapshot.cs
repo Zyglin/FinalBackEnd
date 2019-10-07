@@ -86,12 +86,12 @@ namespace DataAccess.Migrations
                     b.ToTable("Films");
 
                     b.HasData(
-                        new { Id = new Guid("9579ad12-3439-435a-9673-9b82e41b2de0"), Description = "The surviving Resistance faces the First Order once more in the final chapter of the Skywalker saga.", GenreId = 3, ImageXPath = "https://m.media-amazon.com/images/M/MV5BZWU1NDI3YjEtZTlmMy00Y2FmLWI1ZDYtMjYwNDUxYTdlODllXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_SY1000_CR0,0,675,1000_AL_.jpg", Name = "Star Wars", YoutubeId = "Q1qZ6oLV3hg" },
-                        new { Id = new Guid("cc51a9e2-3e0b-45ea-b0f1-7b557dc04da3"), Description = "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.", GenreId = 1, ImageXPath = "https://m.media-amazon.com/images/M/MV5BMTUxMzQyNjA5MF5BMl5BanBnXkFtZTYwOTU2NTY3._V1_.jpg", Name = "The Green Mile", YoutubeId = "CmxArNBJHFQ" },
-                        new { Id = new Guid("79133b5b-abf2-4d88-86aa-1065e430716e"), Description = "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard.", GenreId = 1, ImageXPath = "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg", Name = "The Shawshank Redemption", YoutubeId = "6hB3S9bIaco" },
-                        new { Id = new Guid("be44635a-ec22-4f43-93ab-3c0809855a28"), Description = "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.", GenreId = 1, ImageXPath = "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,686,1000_AL_.jpg", Name = "Pulp Fiction", YoutubeId = "Y6YBKdmOlM8" },
-                        new { Id = new Guid("cb821af7-a7f3-4949-a1e9-0ac3d483e316"), Description = "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.", GenreId = 1, ImageXPath = "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,704,1000_AL_.jpg", Name = "The GodFather", YoutubeId = "sY1S34973zA" },
-                        new { Id = new Guid("a70e815f-f4c0-4cac-b2f7-a50f1c180e1f"), Description = "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.", GenreId = 3, ImageXPath = "https://m.media-amazon.com/images/M/MV5BNGE5MzIyNTAtNWFlMC00NDA2LWJiMjItMjc4Yjg1OWM5NzhhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,684,1000_AL_.jpg", Name = "The Lord of the Rings", YoutubeId = "r5X-hFf6Bwo" }
+                        new { Id = new Guid("101456bf-f3d9-41d2-83c3-83c08e82e9ce"), Description = "The surviving Resistance faces the First Order once more in the final chapter of the Skywalker saga.", GenreId = 3, ImageXPath = "https://m.media-amazon.com/images/M/MV5BZWU1NDI3YjEtZTlmMy00Y2FmLWI1ZDYtMjYwNDUxYTdlODllXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_SY1000_CR0,0,675,1000_AL_.jpg", Name = "Star Wars", YoutubeId = "Q1qZ6oLV3hg" },
+                        new { Id = new Guid("a4e1be53-3dc8-4dcd-8e88-90afd08955e4"), Description = "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.", GenreId = 1, ImageXPath = "https://m.media-amazon.com/images/M/MV5BMTUxMzQyNjA5MF5BMl5BanBnXkFtZTYwOTU2NTY3._V1_.jpg", Name = "The Green Mile", YoutubeId = "CmxArNBJHFQ" },
+                        new { Id = new Guid("a9c23655-6f85-4684-b172-c7c48ff5958e"), Description = "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard.", GenreId = 1, ImageXPath = "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg", Name = "The Shawshank Redemption", YoutubeId = "6hB3S9bIaco" },
+                        new { Id = new Guid("aa827ecf-d24c-4080-b3a2-478c089cd9ae"), Description = "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.", GenreId = 1, ImageXPath = "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,686,1000_AL_.jpg", Name = "Pulp Fiction", YoutubeId = "Y6YBKdmOlM8" },
+                        new { Id = new Guid("f99d646d-2054-49a3-a109-84f9d43ea257"), Description = "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.", GenreId = 1, ImageXPath = "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,704,1000_AL_.jpg", Name = "The GodFather", YoutubeId = "sY1S34973zA" },
+                        new { Id = new Guid("3aa7fc8f-3398-440a-9f6a-78f752db52fc"), Description = "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.", GenreId = 3, ImageXPath = "https://m.media-amazon.com/images/M/MV5BNGE5MzIyNTAtNWFlMC00NDA2LWJiMjItMjc4Yjg1OWM5NzhhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,684,1000_AL_.jpg", Name = "The Lord of the Rings", YoutubeId = "r5X-hFf6Bwo" }
                     );
                 });
 
@@ -130,16 +130,23 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasMaxLength(85);
 
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(85);
+
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasMaxLength(85);
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
                     b.ToTable("Users");
 
                     b.HasData(
-                        new { Id = new Guid("b5d8ca58-9a43-483f-b335-bfa35f220bc7"), Email = "zyglin@mail.ru", PasswordHash = "15000|1KCtkVnuuQyjfCTS|GSKMUwFtkcsyzri0KM+QhVWexTZx3XTIu7FvlhWvg7Y=" }
+                        new { Id = new Guid("2c6270df-c885-4b52-b58d-ec44bf6b6e87"), Email = "zyglin@mail.ru", FullName = "Zyglin Artem Pavlovich", PasswordHash = "15000|NHH5cx2La/tUttq2|LzmB18TbKeGKoRFcCtaZvWh+0+SZA8SnLefqRqKoGc8=", PhoneNumber = "+375291641585" }
                     );
                 });
 

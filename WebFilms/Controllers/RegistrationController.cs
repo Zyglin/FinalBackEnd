@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebFilms.DataAccess;
@@ -15,10 +16,13 @@ namespace WebFilms.Controllers
     public class RegistrationController : Controller
     {
         private IUserService _userService;
+        private readonly IMapper _mapper;
 
-        public RegistrationController(IUserService userService)
+
+        public RegistrationController(IUserService userService, IMapper mapper)
         {
             _userService = userService;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -30,12 +34,9 @@ namespace WebFilms.Controllers
                 User userValid = await _userService.GetUser(model.Email);
                 if (userValid == null && model.Password == model.ConfirmPassword)
                 {
-                    User user = new User()
-                    {
-                        Id = Guid.NewGuid(),
-                        Email = model.Email,
-                        PasswordHash = PBKDF2Helper.CalculateHash(model.ConfirmPassword),
-                    };
+                    User user = _mapper.Map<RegistrationViewModel, User>(model);
+                    user.Id = Guid.NewGuid();
+                    user.PasswordHash = PBKDF2Helper.CalculateHash(model.ConfirmPassword);
                     await _userService.CreateUser(user);
                     return Ok();
                 }

@@ -24,7 +24,9 @@ namespace WebFilms.DataAccess
             {
                 Id = Guid.NewGuid(),
                 Email = "zyglin@mail.ru",
-                PasswordHash = PBKDF2Helper.CalculateHash("password")
+                PasswordHash = PBKDF2Helper.CalculateHash("password"),
+                FullName="Zyglin Artem Pavlovich",
+                PhoneNumber = "+375291641585"
             }
                 );
 

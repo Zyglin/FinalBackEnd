@@ -40,7 +40,7 @@ namespace WebFilms.Controllers
                 if (user != null && PBKDF2Helper.IsValidHash(model.Password, user.PasswordHash))
                 {
                     var tokenString = GenerateJSONWebToken(user);
-                    response = Ok(new { user=user.Email ,jwt = tokenString });
+                    response = Ok(new { user = user.Email ,jwt = tokenString,fullName = user.FullName,number = user.PhoneNumber });
                 }
                 return response;
             }
