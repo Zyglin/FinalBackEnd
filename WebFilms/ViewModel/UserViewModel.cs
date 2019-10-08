@@ -12,5 +12,8 @@ namespace WebFilms.ViewModel
         [MaxLength(85)]
         public string Email { get; set; }
 
+        [Required]
+        public string Filebase64 { get; set; }
+
     }
 }

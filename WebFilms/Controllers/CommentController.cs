@@ -35,6 +35,7 @@ namespace WebFilms.Controllers
             var model = new ListCommentsViewModel();
             IList<Comment> comments = await _commentService.GetComments(id);
             model.Comments = _mapper.Map<IList<Comment>, List<CommentViewModel>>(comments);
+            
             return Ok(model.Comments);  
         }
 

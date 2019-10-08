@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -31,6 +32,18 @@ namespace WebFilms.Controllers
             _httpContextAccessor = httpContextAccessor;
             _userService = userService;
         }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Get()
+        {
+            var data = tokenDecode.DecodeJwt(_httpContextAccessor);
+            string mail = data["Email"];
+            var accessToken = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Substring(7);
+            User user = await _userService.GetUser(mail);
+            return Ok((new { user = user.Email, jwt = accessToken, fullName = user.FullName, number = user.PhoneNumber, imageBase64 = user.Filebase64 }));
+        }
+
 
 
         [HttpPost]
