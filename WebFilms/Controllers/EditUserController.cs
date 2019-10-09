@@ -37,9 +37,9 @@ namespace WebFilms.Controllers
         [Authorize]
         public async Task<IActionResult> Get()
         {
+            var accessToken = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Substring(7);
             var data = tokenDecode.DecodeJwt(_httpContextAccessor);
             string mail = data["Email"];
-            var accessToken = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Substring(7);
             User user = await _userService.GetUser(mail);
             return Ok((new { user = user.Email, jwt = accessToken, fullName = user.FullName, number = user.PhoneNumber, imageBase64 = user.Filebase64 }));
         }
@@ -53,13 +53,12 @@ namespace WebFilms.Controllers
             var data = tokenDecode.DecodeJwt(_httpContextAccessor);
             string mail = data["Email"];
             User oldUser = await _userService.GetUser(mail);
-            if (oldUser != null && PBKDF2Helper.IsValidHash(model.OldPassword, oldUser.PasswordHash))
-            {
-                User _user = _mapper.Map<EditUserViewModel, User>(model);
-                oldUser.Filebase64 = _user.Filebase64;
-                oldUser.PasswordHash = PBKDF2Helper.CalculateHash(model.NewPassword);
-                oldUser.FullName = _user.FullName;
-                oldUser.PhoneNumber = _user.PhoneNumber;
+            if (oldUser != null)
+            {          
+                oldUser.FullName = model.FullName;
+                oldUser.PhoneNumber = model.PhoneNumber;
+                if(model.Filebase64 != null) oldUser.Filebase64 = model.Filebase64;
+                if (model.OldPassword != null && model.NewPassword != null && PBKDF2Helper.IsValidHash(model.OldPassword, oldUser.PasswordHash)) oldUser.PasswordHash = PBKDF2Helper.CalculateHash(model.NewPassword);
                 await _userService.UpdateUser(oldUser);
                 return Ok();
             }
