@@ -64,7 +64,7 @@ namespace WebFilms.Controllers
             }
             else
             {
-                return BadRequest("Password incorrect");
+                return BadRequest();
             }
         }
     }

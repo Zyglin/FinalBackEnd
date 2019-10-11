@@ -49,7 +49,7 @@ namespace WebFilms.Controllers
             _comment.Id = Guid.NewGuid();
             _comment.UserId = userId;
             await _commentService.CreateComment(_comment);
-            return Ok(_comment.FilmId);
+            return Ok();
         }
     }
 }
