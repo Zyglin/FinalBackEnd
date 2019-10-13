@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -38,7 +39,7 @@ namespace WebFilms.Controllers
                     User user = _mapper.Map<RegistrationViewModel, User>(model);
                     user.Id = Guid.NewGuid();
                     user.PasswordHash = PBKDF2Helper.CalculateHash(model.ConfirmPassword);
-                    user.Filebase64 = DEFAULT_AVATAR_BASE64;
+                    user.Filebase64 = Encoding.UTF8.GetBytes(DEFAULT_AVATAR_BASE64);
                     await _userService.CreateUser(user);
                     return Ok();
                 }

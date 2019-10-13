@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -41,7 +42,7 @@ namespace WebFilms.Controllers
             var data = tokenDecode.DecodeJwt(_httpContextAccessor);
             string mail = data["Email"];
             User user = await _userService.GetUser(mail);
-            return Ok((new { user = user.Email, jwt = accessToken, fullName = user.FullName, number = user.PhoneNumber, imageBase64 = user.Filebase64 }));
+            return Ok((new { user = user.Email, jwt = accessToken, fullName = user.FullName, number = user.PhoneNumber, imageBase64 = Encoding.UTF8.GetString(user.Filebase64) }));
         }
 
 
@@ -57,7 +58,7 @@ namespace WebFilms.Controllers
             {          
                 oldUser.FullName = model.FullName;
                 oldUser.PhoneNumber = model.PhoneNumber;
-                if(model.Filebase64 != null) oldUser.Filebase64 = model.Filebase64;
+                if(model.Filebase64 != null) oldUser.Filebase64 = Encoding.UTF8.GetBytes(model.Filebase64);
                 if (model.OldPassword != null && model.NewPassword != null && PBKDF2Helper.IsValidHash(model.OldPassword, oldUser.PasswordHash)) oldUser.PasswordHash = PBKDF2Helper.CalculateHash(model.NewPassword);
                 await _userService.UpdateUser(oldUser);
                 return Ok();

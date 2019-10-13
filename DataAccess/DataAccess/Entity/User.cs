@@ -27,7 +27,7 @@ namespace WebFilms.DataAccess.Entity
         [MaxLength(85)]
         public string PasswordHash { get; set; }
 
-        public string Filebase64 { get; set; }
+        public byte[] Filebase64 { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
 

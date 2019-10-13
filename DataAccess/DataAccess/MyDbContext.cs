@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using WebFilms.DataAccess.Entity;
 
@@ -29,8 +30,8 @@ namespace WebFilms.DataAccess
                 PasswordHash = PBKDF2Helper.CalculateHash("password"),
                 FullName="Zyglin Artem Pavlovich",
                 PhoneNumber = "+375291641585",
-                Filebase64= DEFAULT_AVATAR_BASE64
-            }
+                Filebase64= Encoding.UTF8.GetBytes(DEFAULT_AVATAR_BASE64),
+        }
                 );
 
             for (int i = 1; i < GenreTypes.Length+1; i++)
